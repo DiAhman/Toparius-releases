@@ -21,6 +21,7 @@ TABLE OF CONTENTS
        E. Apache License 2.0
        F. 0BSD License
   III. Apache 2.0 NOTICE Files
+  IV.  Third-Party Trademark Notices
 
 
 ================================================================================
@@ -500,3 +501,20 @@ Copyright 2017-2025 The Apache Software Foundation
 
 This product includes software developed at
 The Apache Software Foundation (https://www.apache.org/).
+
+
+================================================================================
+IV. THIRD-PARTY TRADEMARK NOTICES
+================================================================================
+
+The following trademarks are the property of their respective owners and are
+used in this product solely to describe compatibility and integration with the
+referenced products and services. Their use does not imply any sponsorship,
+affiliation, or endorsement by the trademark owners.
+
+  Ubiquiti, UniFi, and the Ubiquiti U logo are registered trademarks or
+  trademarks of Ubiquiti Inc. in the United States and other countries.
+
+  Tactical RMM (TRMM) is a trademark of its respective owner.
+
+  HaloPSA is a trademark of Halo Service Solutions Ltd.
