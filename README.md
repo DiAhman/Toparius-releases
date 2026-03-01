@@ -54,13 +54,13 @@ Toparius discovers, maps, and monitors your network infrastructure. Built for ma
 
 ### Option 1: `.deb` Packages (Recommended)
 
-Download the latest `.deb` packages from [Releases](https://github.com/DiAhman/toparius-releases/releases).
+Download the latest `.deb` packages from [Releases](https://github.com/DiAhman-Contracting/Toparius-Official/releases).
 
 **Server:**
 
 ```bash
 # Download and install (use _armhf.deb for Raspberry Pi / ARM devices)
-wget https://github.com/DiAhman/toparius-releases/releases/latest/download/toparius-server_amd64.deb
+wget https://github.com/DiAhman-Contracting/Toparius-Official/releases/latest/download/toparius-server_amd64.deb
 sudo dpkg -i toparius-server_amd64.deb
 
 # Edit config (change jwt_secret!)
@@ -76,7 +76,7 @@ sudo systemctl enable --now toparius-server
 
 ```bash
 # Download and install (use _armhf.deb for Raspberry Pi / ARM devices)
-wget https://github.com/DiAhman/toparius-releases/releases/latest/download/toparius-agent_amd64.deb
+wget https://github.com/DiAhman-Contracting/Toparius-Official/releases/latest/download/toparius-agent_amd64.deb
 sudo dpkg -i toparius-agent_amd64.deb
 
 # Edit config (set server URL and API key from the server UI)
@@ -100,9 +100,9 @@ docker pull ghcr.io/diahman-contracting/toparius-server:latest
 docker pull ghcr.io/diahman-contracting/toparius-agent:latest
 
 # Or use docker-compose (download from this repo)
-wget https://raw.githubusercontent.com/DiAhman/toparius-releases/main/docker/docker-compose.yml
-wget https://raw.githubusercontent.com/DiAhman/toparius-releases/main/docker/toparius-server.yaml
-wget https://raw.githubusercontent.com/DiAhman/toparius-releases/main/docker/toparius-agent.yaml
+wget https://raw.githubusercontent.com/DiAhman-Contracting/Toparius-Official/main/docker/docker-compose.yml
+wget https://raw.githubusercontent.com/DiAhman-Contracting/Toparius-Official/main/docker/toparius-server.yaml
+wget https://raw.githubusercontent.com/DiAhman-Contracting/Toparius-Official/main/docker/toparius-agent.yaml
 
 docker compose up -d
 ```
@@ -206,7 +206,7 @@ docker compose up -d
 
 ## Support & Feedback
 
-- **Issues**: [GitHub Issues](https://github.com/DiAhman/toparius-releases/issues)
+- **Issues**: [GitHub Issues](https://github.com/DiAhman-Contracting/Toparius-Official/issues)
 - **Email**: contact@di-ahman.com
 
 ---
