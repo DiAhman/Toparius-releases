@@ -4,15 +4,19 @@ Toparius discovers, maps, and monitors your network infrastructure. Built for ma
 
 ## What It Does
 
-- **Auto-discovery** — ICMP ping sweep, SNMP queries, CDP/LLDP/ARP neighbor detection
-- **Topology mapping** — Visual network maps with auto-created connections from discovery data
-- **Monitoring** — SNMP polling for CPU, memory, interface stats, uptime; SNMP trap receiver; syslog collector
-- **Alerting** — Threshold-based alert rules with email, Slack, Discord, Teams, webhook, and PSA ticket creation
-- **Multi-tenant** — Client/site/network hierarchy with RBAC and scoped client portal
-- **Integrations** — Tactical RMM, UniFi controller, HaloPSA
-- **IPAM** — IP address tracking per subnet with conflict detection and utilization metrics
-- **Config backup** — SSH-based device config backup with change detection and diff comparison
-- **Agent-based** — Deploy lightweight agents to each site for local network discovery and monitoring
+- **Auto-discovery** — Infrastructure-first discovery: SNMP-walks routers/switches first, then recursively crawls CDP/LLDP neighbors, harvests ARP/MAC/route tables, and optionally ping-sweeps endpoints; passive listeners for ARP, mDNS, SSDP, and DHCP
+- **Topology mapping** — Interactive network maps with auto-layout (hierarchical, radial, force-directed), global multi-site map, alert overlays, STP visualization, and VLAN grouping
+- **Monitoring** — SNMP polling for CPU, memory, interface stats, uptime; SNMP trap receiver; syslog collector; real-time WebSocket updates
+- **Alerting** — Threshold-based alert rules with email, Slack, Discord, Teams, webhook, and PSA ticket creation; alert library with pre-built templates
+- **Credential management** — Centralized SNMP v1/v2c/v3 and SSH credential vault with scoped assignment (global, site, network), automated device testing, and per-device verification status
+- **Multi-tenant** — Client/site/network hierarchy with RBAC (admin, manager, technician, viewer, client_admin) and scoped client portal
+- **Integrations** — UniFi controller, Tactical RMM, HaloPSA, ConnectWise Manage
+- **IPAM** — IP address tracking per subnet with conflict detection, utilization metrics, and reservations
+- **Config backup** — SSH-based device config backup with change detection, diff comparison, and scheduled backups
+- **Device Knowledge Base** — 65,000+ device profiles from IANA enterprise OIDs; auto-classifies devices by sysObjectID and sysDescr; self-healing device types on re-scan
+- **Reports & SLA** — Scheduled PDF/CSV reports, uptime tracking, SLA compliance per client
+- **Documentation** — Built-in documentation wiki per client/site with Markdown support
+- **Agent-based** — Lightweight agents deployed per site with auto-update, Windows service support, and one-line installer
 
 ## Architecture
 
@@ -31,9 +35,9 @@ Toparius discovers, maps, and monitors your network infrastructure. Built for ma
    └───────┘ └───────┘ └───────┘
 ```
 
-**Server**: Go binary + embedded React frontend. Single binary, zero runtime dependencies. Hosts the web UI, REST API, alert engine, and database.
+**Server**: Go binary with embedded React frontend. Single binary, zero runtime dependencies. Hosts the web UI, REST API, alert engine, and database. Runs on Linux (amd64, armv7).
 
-**Agent**: Lightweight Go binary deployed to each site. Discovers devices, polls SNMP metrics, and reports back to the server. Auto-updates from the server.
+**Agent**: Lightweight Go binary deployed to each site. Discovers devices, polls SNMP metrics, and reports back to the server over HTTPS. Auto-updates from the server. Runs on Linux (amd64, armv7) and Windows (installed as a service).
 
 ---
 
@@ -41,10 +45,12 @@ Toparius discovers, maps, and monitors your network infrastructure. Built for ma
 
 ### Requirements
 
-- **OS**: Ubuntu/Debian (amd64)
+- **Server OS**: Ubuntu/Debian (amd64 or armv7)
+- **Agent OS**: Linux (amd64, armv7) or Windows (amd64)
 - **Server**: 1 CPU, 512 MB RAM minimum
-- **Agent**: Minimal — runs on any Linux box at the site
-- **Network**: Agent needs ICMP and SNMP access to target subnets; server needs to be reachable from agents on port 8080 (default)
+- **Agent**: Minimal — runs on any Linux box or Windows machine at the site
+- **Database**: SQLite (default, zero-config) or PostgreSQL
+- **Network**: Agent needs ICMP and SNMP access to target subnets; server needs to be reachable from agents on port 8080 (default, HTTPS)
 
 ### Option 1: `.deb` Packages (Recommended)
 
@@ -53,7 +59,7 @@ Download the latest `.deb` packages from [Releases](https://github.com/DiAhman/t
 **Server:**
 
 ```bash
-# Download and install
+# Download and install (use _armhf.deb for Raspberry Pi / ARM devices)
 wget https://github.com/DiAhman/toparius-releases/releases/latest/download/toparius-server_amd64.deb
 sudo dpkg -i toparius-server_amd64.deb
 
@@ -66,10 +72,10 @@ sudo systemctl enable --now toparius-server
 # Open https://your-server:8080 and complete the setup wizard
 ```
 
-**Agent:**
+**Agent (Linux):**
 
 ```bash
-# Download and install
+# Download and install (use _armhf.deb for Raspberry Pi / ARM devices)
 wget https://github.com/DiAhman/toparius-releases/releases/latest/download/toparius-agent_amd64.deb
 sudo dpkg -i toparius-agent_amd64.deb
 
@@ -80,7 +86,11 @@ sudo nano /etc/toparius/toparius-agent.yaml
 sudo systemctl enable --now toparius-agent
 ```
 
-Or use the **one-line deploy** from the Toparius server UI — go to Agents, create an agent, and copy the install command.
+**Agent (Windows):**
+
+Download the Windows installer from the server UI (Agents page), or use the one-line deploy command.
+
+Or use the **one-line deploy** from the Toparius server UI — go to Agents, create an agent, and copy the install command. Supports Linux (amd64, armv7) and Windows.
 
 ### Option 2: Docker
 
@@ -185,12 +195,12 @@ docker compose up -d
 
 ## Getting Started
 
-1. Install the server and open `https://your-server:8080`
-2. Complete the setup wizard (creates admin account)
+1. Install the server and open `https://your-server:8080` (HTTPS with auto-generated certificate by default)
+2. Complete the setup wizard (creates admin account, optionally configures PostgreSQL)
 3. Create a Client > Site > Network in the hierarchy
 4. Create an agent and deploy it to the site using the one-line installer
 5. The agent auto-discovers devices on the network and reports back
-6. View your topology map, set up monitoring thresholds, and configure alerts
+6. View your topology map, configure monitoring thresholds, set up credential tests, and enable alerts
 
 ---
 
