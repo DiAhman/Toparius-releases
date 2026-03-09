@@ -1,13 +1,17 @@
 # End User License Agreement (EULA)
 
-**Toparius Network Topology Manager**
-**Effective Date: February 18, 2026**
+**Plextura Suite**
+**Effective Date: March 8, 2026**
 
 This End User License Agreement ("Agreement") is a legal agreement between you
 (either an individual or a single entity, "Licensee" or "you") and DiAhman
-Contracting, LLC ("Licensor," "we," or "us") for the Toparius software,
-including the server, agent, and web interface components, any associated
-documentation, updates, and patches (collectively, the "Software").
+Contracting, LLC ("Licensor," "we," or "us") for the Plextura Suite software,
+including all module server components, agent components, web interfaces,
+associated documentation, updates, and patches (collectively, the "Software").
+
+The Plextura Suite currently includes the following modules: Toparius (network
+visibility), Pinaxus (directory services), and Akronil (endpoint management).
+Additional modules may be added to the Suite over time.
 
 **BY INSTALLING, COPYING, OR OTHERWISE USING THE SOFTWARE, YOU AGREE TO BE BOUND
 BY THE TERMS OF THIS AGREEMENT. IF YOU DO NOT AGREE, DO NOT INSTALL OR USE THE
@@ -23,11 +27,21 @@ are authorized to use the Software on Licensee's behalf.
 **"Documentation"** means the user guides, installation instructions, and other
 documentation provided with the Software.
 
-**"Instance"** means a single running installation of the Toparius server
-component.
+**"Instance"** means a single running installation of any Plextura Suite module
+server component.
 
 **"License Key"** means the unique key or credential provided by Licensor to
 activate the Software, if applicable.
+
+**"Module"** means an individual product within the Plextura Suite (e.g.,
+Toparius, Pinaxus, Akronil), each licensed separately under this Agreement.
+
+**"Plextura Account"** means the user account created through the Plextura
+portal for managing licenses, entitlements, and module instances.
+
+**"Plextura Cloud"** means the cloud services operated by Licensor for license
+activation, entitlement management, software updates, relay connectivity, and
+related services.
 
 **"Third-Party Components"** means open-source software libraries and components
 incorporated into the Software, as identified in the THIRD-PARTY-LICENSES file.
@@ -52,12 +66,29 @@ d. Deploy agent components on networks managed by Licensee on behalf of its
 ### 2.2 Managed Service Provider (MSP) Use
 
 If Licensee is a managed service provider, Licensee may use the Software to
-monitor and manage networks belonging to Licensee's clients, provided that:
+manage networks, directories, and endpoints belonging to Licensee's clients,
+provided that:
 
 a. Each client's data remains logically separated within the Software;
 b. Licensee does not grant clients direct access to the Software beyond the
    built-in client portal functionality;
-c. Licensee remains responsible for compliance with this Agreement.
+c. Licensee remains responsible for compliance with this Agreement;
+d. The number of clients does not exceed the limits of Licensee's license tier.
+
+### 2.3 Entitlements
+
+Each Module is licensed separately. Licensee's entitlements (which Modules are
+active, at what tier, and with what limits) are determined by the Plextura
+Account associated with the Instance. Entitlements may include limits on
+devices, sites, agents, clients, and other resources as defined by the
+applicable license tier.
+
+### 2.4 Trial Licenses
+
+Licensor may offer time-limited trial licenses for evaluation purposes. Trial
+licenses are limited to one per Module per Plextura Account and include
+reduced resource limits as defined at the time of trial provisioning. Trial
+licenses are not for production use.
 
 ---
 
@@ -86,8 +117,8 @@ e. **Remove Notices** — Remove, alter, or obscure any copyright, trademark, or
 f. **Competitive Use** — Use the Software to develop a product or service that
    competes with the Software;
 
-g. **Circumvent** — Circumvent or disable any license key, access control, or
-   usage limitation mechanism in the Software;
+g. **Circumvent** — Circumvent or disable any license key, access control,
+   activation mechanism, or usage limitation in the Software;
 
 h. **Benchmark** — Publish or disclose performance benchmarks or comparisons of
    the Software without prior written consent from Licensor;
@@ -115,9 +146,10 @@ obligation to Licensee.
 
 ### 4.3 Trademarks
 
-"Toparius" and the Toparius logo are trademarks of DiAhman Contracting, LLC.
-This Agreement does not grant Licensee any right to use Licensor's trademarks
-except as necessary to identify the Software in normal use.
+"Plextura," "Toparius," "Pinaxus," "Akronil," and their respective logos are
+trademarks of DiAhman Contracting, LLC. This Agreement does not grant Licensee
+any right to use Licensor's trademarks except as necessary to identify the
+Software in normal use.
 
 ---
 
@@ -147,25 +179,49 @@ NOTICE file are included in the THIRD-PARTY-LICENSES file.
 
 ---
 
-## 6. Data and Privacy
+## 6. Plextura Cloud and Data
 
-### 6.1 Licensee Data
+### 6.1 Cloud Connectivity
 
-All network topology data, device information, monitoring metrics, and other
-data entered into or collected by the Software ("Licensee Data") remains the
-sole property of Licensee. Licensor has no right to access Licensee Data unless
-explicitly authorized by Licensee for support purposes.
+The Software connects to Plextura Cloud for license activation, entitlement
+verification, periodic check-in, software updates, and relay connectivity. An
+internet connection is required for initial activation and periodic license
+verification.
 
-### 6.2 No Telemetry
+### 6.2 Data Transmitted to Cloud
 
-The Software does not transmit telemetry, usage statistics, or Licensee Data to
-Licensor or any third party. All data remains on Licensee's infrastructure.
+When connecting to Plextura Cloud, the Software transmits:
 
-### 6.3 Update Checks
+- Module name and version
+- Instance identifier
+- Machine fingerprint (a one-way hash; not reversible to hardware details)
+- License and entitlement status
+- Check-in timestamp
 
-The Software may contact GitHub to check for available updates. This check
-transmits only the current software version and does not include any Licensee
-Data.
+The Software does **not** transmit Licensee's business data (network topology,
+device information, client records, monitoring metrics, or any other data
+entered into or collected by the Software) to Plextura Cloud.
+
+### 6.3 Telemetry
+
+The Software may include an optional, anonymous telemetry feature. Telemetry
+is **disabled by default** and collects only aggregated, non-identifying usage
+statistics. Licensee may enable or disable telemetry at any time in the
+Software's settings. See the Privacy Policy for details.
+
+### 6.4 Licensee Data
+
+All network topology data, device information, client records, monitoring
+metrics, and other data entered into or collected by the Software ("Licensee
+Data") remains the sole property of Licensee and resides on Licensee's
+infrastructure. Licensor has no right to access Licensee Data unless explicitly
+authorized by Licensee for support purposes.
+
+### 6.5 Plextura Account
+
+A Plextura Account is required to activate the Software and manage
+entitlements. Account data (email, name, organization) is processed in
+accordance with the Privacy Policy.
 
 ---
 
@@ -174,7 +230,8 @@ Data.
 ### 7.1 Updates
 
 Licensor may, at its sole discretion, release updates, patches, or new versions
-of the Software. Updates may be subject to additional or different terms.
+of the Software. The Software checks for available updates via Plextura Cloud.
+Updates may be subject to additional or different terms.
 
 ### 7.2 Support
 
@@ -308,10 +365,10 @@ Agreement freely.
 
 ### 12.7 Entire Agreement
 
-This Agreement, together with the LICENSE file and any applicable order form or
-purchase agreement, constitutes the entire agreement between the parties
-regarding the Software and supersedes all prior or contemporaneous agreements,
-understandings, and communications.
+This Agreement, together with the LICENSE file, Privacy Policy, and any
+applicable order form or purchase agreement, constitutes the entire agreement
+between the parties regarding the Software and supersedes all prior or
+contemporaneous agreements, understandings, and communications.
 
 ### 12.8 Amendments
 

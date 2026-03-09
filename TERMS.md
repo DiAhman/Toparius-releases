@@ -1,19 +1,20 @@
 # Terms of Service
 
-**Toparius Network Topology Manager**
-**Effective Date: February 18, 2026**
+**Plextura Suite**
+**Effective Date: March 8, 2026**
 
-These Terms of Service ("Terms") govern your access to and use of the Toparius
-software distribution website, download services, package repositories, and
-related online services (collectively, the "Services") provided by DiAhman
-Contracting, LLC ("Licensor," "we," "us," or "our").
+These Terms of Service ("Terms") govern your access to and use of the Plextura
+Suite software distribution services, Plextura Cloud, the Plextura portal,
+package repositories, documentation, and related online services (collectively,
+the "Services") provided by DiAhman Contracting, LLC ("Licensor," "we," "us,"
+or "our").
 
 **BY ACCESSING OR USING THE SERVICES, YOU AGREE TO BE BOUND BY THESE TERMS. IF
 YOU DO NOT AGREE, DO NOT USE THE SERVICES.**
 
-These Terms apply to the Services only. Use of the Toparius software itself is
-governed by the End User License Agreement (EULA) and the proprietary LICENSE
-file included with the software.
+These Terms apply to the Services only. Use of the Plextura Suite software
+itself is governed by the End User License Agreement (EULA) and the proprietary
+LICENSE file included with the software.
 
 ---
 
@@ -21,14 +22,19 @@ file included with the software.
 
 The Services include:
 
-a. **Software Distribution** — Download of Toparius server and agent packages
-   via GitHub Releases, container registries, and any future package
+a. **Plextura Cloud** — License activation, entitlement management, periodic
+   check-in, software update distribution, and WebSocket relay connectivity
+   for Plextura Suite modules;
+b. **Plextura Portal** — Web-based account management, module downloads,
+   entitlement viewing, instance management, and beta program enrollment;
+c. **Software Distribution** — Download of Plextura Suite module server and
+   agent packages via the portal, container registries, and any future package
    repositories;
-b. **Documentation** — Installation guides, configuration references, and
+d. **Documentation** — Installation guides, configuration references, and
    release notes published online;
-c. **Issue Tracking** — Public bug reporting and feature request submission;
-d. **Update Notifications** — Version check endpoints used by the Software to
-   detect available updates.
+e. **Issue Tracking** — Public bug reporting and feature request submission;
+f. **Admin Dashboard** — Internal management interface for account and
+   entitlement administration.
 
 ---
 
@@ -40,18 +46,34 @@ represent that you have the authority to bind that organization to these Terms.
 
 ---
 
-## 3. Accounts and Access
+## 3. Plextura Account
 
 ### 3.1 Registration
 
-Certain Services may require registration. You agree to provide accurate
-information and keep your credentials secure. You are responsible for all
-activity under your account.
+Access to the portal and Cloud services requires a Plextura Account. You agree
+to:
 
-### 3.2 API Keys
+a. Provide accurate and complete registration information;
+b. Maintain the security of your account credentials;
+c. Promptly update your information if it changes;
+d. Accept responsibility for all activity under your account.
 
-Software license keys, API keys, and agent tokens are confidential. You must
-not share, publish, or embed them in publicly accessible locations.
+### 3.2 Email Verification
+
+We may require email verification before granting full access to certain
+Services. You must provide a valid email address that you control.
+
+### 3.3 Account Security
+
+Instance secrets, API keys, license keys, and session tokens are confidential.
+You must not share, publish, or embed them in publicly accessible locations.
+You are responsible for any actions taken using your credentials.
+
+### 3.4 Account Deletion
+
+You may request deletion of your Plextura Account at any time. Account
+deletion will deactivate all associated licenses and instance registrations.
+See the Privacy Policy for details on data retention after deletion.
 
 ---
 
@@ -67,11 +89,15 @@ e. Scrape, crawl, or use automated means to access the Services in a manner
    that exceeds reasonable use;
 f. Impersonate any person or entity;
 g. Use the Services to distribute unauthorized copies of the Software;
-h. Circumvent any access restrictions, rate limits, or download controls.
+h. Circumvent any access restrictions, rate limits, activation controls, or
+   download controls;
+i. Create multiple accounts to circumvent trial limitations or entitlement
+   restrictions;
+j. Share account credentials or instance secrets with unauthorized parties.
 
 ---
 
-## 5. Software Downloads
+## 5. Software Downloads and Entitlements
 
 ### 5.1 License
 
@@ -79,15 +105,26 @@ Downloading the Software does not grant you ownership. Use of the Software is
 subject to the EULA included with each distribution. By downloading, you
 acknowledge that you have read and agree to the EULA.
 
-### 5.2 Integrity
+### 5.2 Entitlements
 
-We provide SHA-256 checksums and/or signed packages where available. You are
-responsible for verifying download integrity before installation.
+Your access to module downloads is determined by your account's entitlements.
+You may only download modules for which you have an active license or trial.
 
-### 5.3 Availability
+### 5.3 Trials
+
+Trial entitlements are limited to one per module per account. Trials are
+time-limited and include reduced resource limits. Creating multiple accounts
+to obtain additional trials is a violation of these Terms.
+
+### 5.4 Integrity
+
+We provide SHA-256 checksums and/or Ed25519 signed packages where available.
+You are responsible for verifying download integrity before installation.
+
+### 5.5 Availability
 
 We provide the Services on an "as available" basis. We do not guarantee
-uninterrupted access to downloads, repositories, or update endpoints. We
+uninterrupted access to downloads, Cloud services, or update endpoints. We
 reserve the right to modify, suspend, or discontinue any Service at any time.
 
 ---
@@ -96,8 +133,8 @@ reserve the right to modify, suspend, or discontinue any Service at any time.
 
 ### 6.1 Container Images
 
-Docker images published to the GitHub Container Registry (ghcr.io) are provided
-for convenience. Use of these images is subject to the EULA.
+Docker images published to container registries are provided for convenience.
+Use of these images is subject to the EULA.
 
 ### 6.2 No Redistribution
 
@@ -133,8 +170,8 @@ request.
 ### 8.1 Ownership
 
 All content, software, and materials available through the Services are owned by
-or licensed to DiAhman Contracting, LLC. The "Toparius" name, logo, and
-associated branding are trademarks of DiAhman Contracting, LLC.
+or licensed to DiAhman Contracting, LLC. "Plextura," "Toparius," "Pinaxus,"
+"Akronil," and associated branding are trademarks of DiAhman Contracting, LLC.
 
 ### 8.2 Limited License
 
@@ -155,22 +192,9 @@ respective terms.
 
 ## 10. Privacy
 
-### 10.1 Download Information
-
-We may collect basic access logs (IP address, timestamp, user agent, download
-path) through our hosting infrastructure. We do not sell or share this data with
-third parties.
-
-### 10.2 Update Checks
-
-When the Software checks for updates, only the software version is transmitted.
-No personally identifiable information or customer data is included.
-
-### 10.3 Issue Tracker
-
-Information you submit to the public issue tracker (bug reports, feature
-requests) is publicly visible. Do not include sensitive information such as
-credentials, internal network details, or customer data in public submissions.
+Your use of the Services is subject to our Privacy Policy, which describes how
+we collect, use, and protect your information. By using the Services, you
+acknowledge that you have read and agree to the Privacy Policy.
 
 ---
 
@@ -209,12 +233,15 @@ Services in violation of these Terms or applicable law.
 
 ### 14.1 By You
 
-You may stop using the Services at any time.
+You may stop using the Services at any time. You may delete your Plextura
+Account as described in Section 3.4.
 
 ### 14.2 By Us
 
 We may suspend or terminate your access to the Services at any time, for any
-reason, with or without notice.
+reason, with or without notice. Grounds for termination include but are not
+limited to violation of these Terms, suspected fraud, or abuse of trial
+entitlements.
 
 ### 14.3 Survival
 
@@ -240,13 +267,13 @@ If any provision is held invalid, the remaining provisions continue in effect.
 
 ### 15.4 Entire Agreement
 
-These Terms, together with the EULA and LICENSE, constitute the entire agreement
-regarding the Services.
+These Terms, together with the EULA, LICENSE, and Privacy Policy, constitute the
+entire agreement regarding the Services.
 
 ### 15.5 Changes
 
-We reserve the right to modify these Terms at any time. Changes will be posted
-to the repository with an updated effective date. Continued use after changes
+We reserve the right to modify these Terms at any time. Material changes will be
+communicated through the portal or via email. Continued use after changes
 constitutes acceptance.
 
 ### 15.6 Contact
